@@ -385,6 +385,8 @@ static int uvc_udcd_attach(int usb_version, void *user_data)
 {
 	LOG("uvc_udcd_attach %d\n", usb_version);
 
+	ksceOledDisplayOff();
+
 	ksceUdcdClearFIFO(&endpoints[2]);
 
 	return 0;
@@ -393,6 +395,8 @@ static int uvc_udcd_attach(int usb_version, void *user_data)
 static void uvc_udcd_detach(void *user_data)
 {
 	LOG("uvc_udcd_detach\n");
+
+	ksceOledDisplayOn();
 
 	uvc_handle_video_abort();
 }
